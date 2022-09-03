@@ -33,9 +33,9 @@ instrument.mode = minimalmodbus.MODE_RTU   # rtu or ascii mode
 # HIDDEN REGESITERS
 ################################################################
 
-# Compresor Frequency - doesnt seem to work
+# Compresor Frequency
 instrument.write_register(6000,0x8238)
-# time.sleep(0.5)
+time.sleep(0.5)
 compressor_freq = instrument.read_register(4,functioncode=3)
 print ("Compressor Freq: " + str(compressor_freq))
 
@@ -50,17 +50,22 @@ time.sleep(0.5)
 
 
 # Flow rate in L/min
-instrument.write_register(6007,0x42E9)
+instrument.write_register(7005,0x42E9)
 time.sleep(0.5)
-flowrate = round(0.1*(instrument.read_register(11,functioncode=3)),2)
+flowrate = round(0.1*(instrument.read_register(87,functioncode=3)),2)
 print ("Flow rate: " + str(flowrate))
 
+
 # compressor_freq_ratio 50%-150%
-instrument.write_register(6008,0x42F1)
+instrument.write_register(7006,0x42F1)
 time.sleep(0.5)
-compressor_freq_ratio = round(0.1*(instrument.read_register(12,functioncode=3)),2)
+compressor_freq_ratio = round(0.1*(instrument.read_register(88,functioncode=3)),2)
 print ("Compressor frequency ratio: " + str(compressor_freq_ratio))
 
+
+################################################################
+# MAIN REGESITERS
+################################################################
 
 dhw_temp = round(0.1*(instrument.read_register(75,functioncode=3)),2)
 time.sleep(0.5)
