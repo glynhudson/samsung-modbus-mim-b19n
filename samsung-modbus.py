@@ -33,25 +33,31 @@ instrument.mode = minimalmodbus.MODE_RTU   # rtu or ascii mode
 # HIDDEN REGESITERS
 ################################################################
 
-# Outdoor temp
-instrument.write_register(6001,0x8204)
+# Flow rate in L/min
+# FR control
+# 3 way valve position. 0=CH, 1=DHW
+# OutdoorT
+instrument.write_registers(7005,[0x42E9, 0x42F1, 0x4067, 0x8204])
 time.sleep(0.5)
+
+# Outdoor temp
 outdoor_temp = round(0.1*(instrument.read_register(5,functioncode=3)),2)
 print ("Outdoor temp: " + str(outdoor_temp))
 time.sleep(0.5)
 
 # Flow rate in L/min
-instrument.write_register(7005,0x42E9)
-time.sleep(0.5)
 flowrate = round(0.1*(instrument.read_register(87,functioncode=3)),2)
 print ("Flow rate: " + str(flowrate))
-
+time.sleep(0.5)
 
 # 3 way valve position. 0=CH, 1=DHW
-instrument.write_register(7007,0x4067)
 time.sleep(0.5)
 threeway_valve_position = instrument.read_register(89,functioncode=3)
 print ("3 way valve position: " + str(threeway_valve_position))
+
+# Compressor Freq (%)
+compressor_freq = instrument.read_register(88,functioncode=3)
+print ("Compressor freq %: " + str(compressor_freq))
 
 
 ################################################################
