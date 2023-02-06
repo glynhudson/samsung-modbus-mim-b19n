@@ -42,7 +42,7 @@ instrument.write_registers(7005,[0x42E9, 0x42F1, 0x4067, 0x8204])
 time.sleep(0.5)
 
 # Outdoor temp
-outdoor_temp = round(0.1*(instrument.read_register(5,functioncode=3)),2)
+outdoor_temp = round(0.1*(instrument.read_register(5,functioncode=3,signed=True)),2)
 print ("Outdoor temp: " + str(outdoor_temp))
 time.sleep(0.5)
 
