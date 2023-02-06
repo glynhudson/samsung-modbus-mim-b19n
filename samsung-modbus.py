@@ -10,7 +10,8 @@ def millis():
 def C(val):
     return struct.pack('!H', val)
 
-instrument = minimalmodbus.Instrument('/dev/ttyUSB0', 1)
+instrument = minimalmodbus.Instrument('/dev/ttyUSB0',1)
+#instrument = minimalmodbus.Instrument('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', 1)
 
 instrument.serial.port                     # this is the serial port name
 instrument.serial.baudrate = 9600          # Baud
@@ -58,19 +59,19 @@ print ("3 way valve position: " + str(threeway_valve_position))
 # Compressor Freq (%)
 compressor_freq = instrument.read_register(88,functioncode=3)
 print ("Compressor freq %: " + str(compressor_freq))
-
+time.sleep(1)
 
 ################################################################
 # MAIN REGESITERS
 ################################################################
 
-dhw_temp = round(0.1*(instrument.read_register(75,functioncode=3)),2)
+dhw_temp = round(0.1*(instrument.read_register(75,functioncode=3,signed=True)),2)
 time.sleep(0.5)
 
-return_temp = round(0.1*(instrument.read_register(65,functioncode=3)),2)
+return_temp = round(0.1*(instrument.read_register(65,functioncode=3,signed=True)),2)
 time.sleep(0.5)
 
-flow_temp = round(0.1*(instrument.read_register(66,functioncode=3)),2)
+flow_temp = round(0.1*(instrument.read_register(66,functioncode=3,signed=True)),2)
 time.sleep(0.5)
 
 target_flow_temp = round(0.1*(instrument.read_register(68,functioncode=3)),2)
@@ -88,10 +89,10 @@ time.sleep(0.5)
 ch_status = instrument.read_register(52,functioncode=3)
 time.sleep(0.5)
 
-indoor_temp = round(0.1*(instrument.read_register(59,functioncode=3)),2)
+indoor_temp = round(0.1*(instrument.read_register(59,functioncode=3,signed=True)),2)
 time.sleep(0.5)
 
-target_indoor_temp  = round(0.1*(instrument.read_register(58,functioncode=3)),2)
+target_indoor_temp  = round(0.1*(instrument.read_register(58,functioncode=3,signed=True)),2)
 time.sleep(0.5)
 
 defrost_status = instrument.read_register(2,functioncode=3)
@@ -130,7 +131,7 @@ print ("Defrost operation status: " + str(defrost_status))
 
 
 # Set DHW temp to 50 deg C
-# instrument.write_register(74,500)
+#instrument.write_register(74,550)
 
 # Set flow temp to 40 deg C - doenst seem to work
 # instrument.write_register(68,400)
