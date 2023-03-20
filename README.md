@@ -1,6 +1,6 @@
 # samsung-modbus-mim-b19n
 
-Example python script to read and write data to a Samsung Heat Pump or HVAC unit using a [MIM-B19N Modbus module](https://www.samsung.com/uk/support/model/MIM-B19N/)
+Example python script to for testing reading and writing data to a Samsung Heat Pump or HVAC unit using a [MIM-B19N Modbus module](https://www.samsung.com/uk/support/model/MIM-B19N/), [purchase from Midsummer](https://midsummerwholesale.co.uk/buy/samsung-heat-pumps/Samsung-modbus-MIM-B19) 
 
 ## Tested with:
 
@@ -43,7 +43,7 @@ Write / controll comands can be activated by un-commenting them.
 
 ## Next setps
 
-- Integrated this into a [EmonHub](https://github.com/openenergymonitor/emonhub) interfacer module to log the data to MQTT and [Emoncms](https://github.com/emoncms/emoncms)
+- [**DONE:**](https://github.com/openenergymonitor/emonhub/tree/master/conf/interfacer_examples/samsung-ashp) Integrated this into a [EmonHub](https://github.com/openenergymonitor/emonhub) interfacer module to log the data to MQTT and [Emoncms](https://github.com/emoncms/emoncms) 
 - Home Assistant integration? (can anyone help with this?)
 - NodeRED module? (can anyone help with this?)
 
