@@ -133,7 +133,7 @@ print ("Defrost operation status: " + str(defrost_status))
 # Set DHW temp to 50 deg C
 #instrument.write_register(74,550)
 
-# Set flow temp to 40 deg C - doenst seem to work
+# Set flow temp to 40 deg C 
 # instrument.write_register(68,400)
 
 # Set indoor target temp to 21 deg C
