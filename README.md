@@ -47,6 +47,9 @@ Write / controll comands can be activated by un-commenting them.
 - Home Assistant integration? (can anyone help with this?)
 - NodeRED module? (can anyone help with this?)
 
+## More Resources 
+
+More info on Samsung communication protocols including the NASA protocol which is used for communication between indoor and outdoor units can be found here: https://wiki.myehs.eu/wiki/Main_Page
 
 
 
